@@ -1,0 +1,72 @@
+---
+title: "1020 Grade Analysis"
+date: "`r Sys.Date()`"
+output: 
+    html_document:
+        toc: true
+        toc_float:
+            smooth_scroll: true
+        toc_depth: 3
+        number_sections: false
+---
+
+```{r setup, include=FALSE}
+
+pacman::p_load(tidyverse,
+               stringr,
+               readxl,
+               emmeans,
+               plotrix,
+               emmeans,
+               multcomp,
+               skimr,
+               here,
+               knitr)
+
+knitr::opts_chunk$set(echo = TRUE)
+here::set_here()
+here::i_am('6_markdown/markdown_template.RMD')
+
+# Load results (this is the output of the analyze_grades function)
+results <- readRDS(here("5_results/my_list_of_results.rds"))
+
+```
+
+# Boxplot
+
+```{r echo = FALSE}
+results$Boxplot
+```
+
+# Means and SDs
+
+```{r echo = FALSE}
+results$Means_Graph
+```
+
+# Histogram
+
+```{r echo = FALSE}
+results$Histogram
+```
+
+# Summary Stats
+
+```{r echo = FALSE}
+results$Summary_Table
+```
+
+# Means by Cohort
+
+```{r echo = FALSE}
+results$Means_by_cohort
+```
+
+# Tests
+
+```{r echo = FALSE}
+results$Levene_Test
+results$Kruskal_Wallis
+results$Dunn_Test
+```
+
